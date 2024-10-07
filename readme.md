@@ -18,13 +18,13 @@ A simple Python application to calculate grades based on subjects, total marks, 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/GTU-Grade-Calculator.git
-   cd GTU-Grade-Calculator
+   git clone https://github.com/sandip3/Grade-calculator.git
+   cd Grade-calculator
    ```
 
 2. **Run the application**:
    ```bash
-   python calculator.py
+   python main.py
    ```
 
 ## 🛠️ Usage
