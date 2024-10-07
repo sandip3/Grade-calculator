@@ -1,7 +1,6 @@
 class Calculator:
 
     def menu(self):
-
         print(
             """
 This is GTU Grade Calculator
@@ -12,32 +11,46 @@ Choose From Below Options:
 1. Calculate Grade
 """
         )
+
+        # Initialize lists to store subjects and marks
         Sub = []
         T_mark = []
         mark = []
 
-        choose = int(input("What is your choose: "))
-        print("\nCalculator Start")
-        while choose != 0:
+        while True:
+            choose = int(input("What is your choice (0 to exit, 1 to continue): "))
+            if choose == 0:
+                print("Exiting the calculator.")
+                break
+            elif choose == 1:
+                print("\nCalculator Start")
 
-            Sub_name = input("\nEnter Subject name : ")
-            Sub_total = int(input(f"Enter {Sub_name}'s Total Mark : "))
-            Sub_Mark = int(input(f"Enter {Sub_name}'s Mark : "))
+                # Inputs
+                Sub_name = input("\nEnter Subject name: ")
+                Sub_total = int(input(f"Enter {Sub_name}'s Total Marks: "))
+                Sub_mark = int(input(f"Enter {Sub_name}'s Obtained Marks: "))
 
-            Sub.append(Sub_name)
-            T_mark.append(Sub_total)
-            mark.append(Sub_Mark)
+                # Append inputs to the lists
+                Sub.append(Sub_name)
+                T_mark.append(Sub_total)
+                mark.append(Sub_mark)
 
-            choose = 0
-            choose = int(input("\nDo you want to Continue Calculating : "))
+                continue_choice = (
+                    input("\nDo you want to continue calculating? (yes/no): ")
+                    .strip()
+                    .lower()
+                )
+                if continue_choice != "yes":
+                    break
+            else:
+                print("Invalid choice. Please enter 0 to exit or 1 to continue.")
 
+        # Calculate grades
         Sub_grade = []
         Sub_l_grade = []
-
         Sub_len = len(mark)
 
-        for i in range(0, Sub_len):
-
+        for i in range(Sub_len):
             percentage = (mark[i] / T_mark[i]) * 100
             Sub_grade.append(percentage)
             if percentage >= 90:
@@ -53,20 +66,22 @@ Choose From Below Options:
             else:
                 Sub_l_grade.append("F")
 
-        for i in range(0, Sub_len):
+        # Display results
+        for i in range(Sub_len):
             print(
                 f"""
 ---------------------------------------------------------------------------------------------------------------
-    Subject : {Sub[i]}
-    Total Marks : {T_mark[i]}
-    Obtained Marks : {mark[i]}
+    Subject: {Sub[i]}
+    Total Marks: {T_mark[i]}
+    Obtained Marks: {mark[i]}
 
-    Percentage : {Sub_grade[i]}
-    Grade : {Sub_l_grade[i]}
+    Percentage: {Sub_grade[i]:.2f}%
+    Grade: {Sub_l_grade[i]}
     
                   """
             )
 
 
+# Instantiate the calculator and start the menu
 calc = Calculator()
 calc.menu()
